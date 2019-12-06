@@ -1,0 +1,2 @@
+config BOARD_RAZER_BLADE_STEALTH_ICL
+	bool "Blade Stealth (Ice Lake U) Mercury White late 2019 (LY320)"
