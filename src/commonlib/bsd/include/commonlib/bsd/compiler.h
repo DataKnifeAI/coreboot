@@ -58,6 +58,13 @@
 #define __fallthrough __attribute__((__fallthrough__))
 #endif
 
+/* GCC 15+ / Clang 21+: allow intentional non-NUL-terminated char arrays. */
+#if (defined(__GNUC__) && __GNUC__ >= 15) || (defined(__clang__) && __clang_major__ >= 21)
+#define __nonstring __attribute__((__nonstring__))
+#else
+#define __nonstring
+#endif
+
 /*
  * This evaluates to the type of the first expression, unless that is constant
  * in which case it evaluates to the type of the second. This is useful when

@@ -116,6 +116,8 @@ TOOLCFLAGS ?= -Werror -Wall -Wextra -Wshadow
 TOOLCFLAGS += -Wcast-qual -Wmissing-prototypes -Wredundant-decls -Wshadow
 TOOLCFLAGS += -Wstrict-prototypes -Wwrite-strings
 TOOLCFLAGS += -O2
+# Host GCC 15+: intentional fixed-width char arrays without NUL terminators.
+TOOLCFLAGS += -Wno-unterminated-string-initialization
 TOOLCPPFLAGS ?= -D_DEFAULT_SOURCE # memccpy() from string.h
 TOOLCPPFLAGS += -D_BSD_SOURCE -D_SVID_SOURCE # _DEFAULT_SOURCE for older glibc
 TOOLCPPFLAGS += -D_GNU_SOURCE # memmem() from string.h
@@ -155,6 +157,7 @@ $(VBOOT_HOSTLIB):
 	unset CFLAGS LDFLAGS; $(MAKE) -C $(VBOOT_SOURCE) \
 		BUILD=$(VBOOT_HOST_BUILD) \
 		CC="$(HOSTCC)" \
+		WERROR= \
 		PKG_CONFIG="true" \
 		USE_FLASHROM=0 \
 		V=$(V) \
