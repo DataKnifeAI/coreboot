@@ -30,7 +30,7 @@ config CPU_SPECIFIC_OPTIONS
 	select MP_SERVICES_PPI_V1
 	select MRC_SETTINGS_PROTECT
 	select PARALLEL_MP_AP_WORK
-	select MICROCODE_BLOB_UNDISCLOSED
+	# Microcode from 3rdparty/intel-microcode (06-7e-05); see Makefile.inc
 	select PLATFORM_USES_FSP2_1
 	select PMC_GLOBAL_RESET_ENABLE_LOCK
 	select CPU_INTEL_COMMON

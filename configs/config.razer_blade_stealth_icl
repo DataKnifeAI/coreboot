@@ -1,10 +1,15 @@
 # Razer Blade Stealth late 2019 (LY320 / RZ09-03101) — Ice Lake
-# Board from CL 37565 (Johanna Schander / Mimoja). Smoke build: SeaBIOS, FSP from
-# 3rdparty/fsp (FSP_USE_REPO), no IFD/ME stitch (BIOS-region image only).
+# Board from CL 37565 (Johanna Schander / Mimoja). Stitched 16 MiB image:
+# IFD+ME from local vendor dump + SeaBIOS + Ice Lake FSP + microcode 06-7e-05.
+# Proprietary blobs stay local (gitignored *.bin / intel-microcode / fsp).
+# Do NOT flashrom -w until emberrom PREFLASH.md signoff is GO.
 CONFIG_VENDOR_RAZER=y
 CONFIG_BOARD_RAZER_BLADE_STEALTH_ICL=y
 CONFIG_CBFS_SIZE=0x200000
 CONFIG_CONSOLE_CBMEM_BUFFER_SIZE=0x20000
+CONFIG_HAVE_IFD_BIN=y
+CONFIG_HAVE_ME_BIN=y
+CONFIG_DO_NOT_TOUCH_DESCRIPTOR_REGION=y
 CONFIG_SUBSYSTEM_VENDOR_ID=0x0000
 CONFIG_SUBSYSTEM_DEVICE_ID=0x0000
 CONFIG_I2C_TRANSFER_TIMEOUT_US=500000

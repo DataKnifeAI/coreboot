@@ -48,4 +48,7 @@ smm-y += uart.c
 CPPFLAGS_common += -I$(src)/soc/intel/icelake
 CPPFLAGS_common += -I$(src)/soc/intel/icelake/include
 
+# Ice Lake-U/Y (i7-1065G7 etc.): CPUID 0x706e5
+cpu_microcode_bins += 3rdparty/intel-microcode/intel-ucode/06-7e-05
+
 endif
